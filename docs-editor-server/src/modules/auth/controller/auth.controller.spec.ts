@@ -26,7 +26,7 @@ describe('AuthController', () => {
     it('should call the authService.registerUser method with the provided registerDto', async () => {
       const registerDto: RegisterDto = {
         password: '12345',
-        email: 'smsss@gmail.com',
+        email: 'smssss@gmail.com',
         user_name: 'Michael Angel',
       };
       authService.registerUser = jest.fn().mockResolvedValueOnce('registered');
