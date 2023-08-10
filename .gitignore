@@ -1,0 +1,12 @@
+# Root 
+node_modules/
+dist/
+.env
+
+# Client-specific .gitignore
+docs-editor/node_modules/
+
+# Server-specific .gitignore
+docs-editor-server/node_modules/
+
+docs-editor-server/.env

@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  email     String      @unique
+  user_name String
+  password  String
+  documents documents[]
+}
+
+model documents {
+  id             String        @id @default(auto()) @map("_id") @db.ObjectId
+  document_owner users         @relation(fields: [owner_id], references: [id], onDelete: Cascade)
+  owner_id       String        @db.ObjectId
+  description    String?
+  content        Json?
+  title          String
+  created_at     DateTime      @default(now())
+  updated_at     DateTime      @updatedAt
+  doc_history    doc_history[]
+  doc_room       rooms?
+}
+
+model rooms {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  created_at      DateTime  @default(now())
+  permitted_users String[]  @db.ObjectId
+  owner_id        String    @db.ObjectId
+  documents       documents @relation(fields: [documentsId], references: [id])
+  documentsId     String    @unique() @db.ObjectId
+}
+
+model doc_history {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  document    documents @relation(fields: [documentsId], references: [id])
+  data        Json
+  title       String
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  documentsId String    @db.ObjectId
+}

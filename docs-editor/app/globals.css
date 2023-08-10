@@ -1,0 +1,297 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  /* background-color: #f3f3f3; */
+  margin: 0;
+}
+
+.editor .ql-editor {
+  width: 8.5in;
+  min-height: 11in;
+  padding: 1in;
+  margin: 1rem;
+  box-shadow: 0 0 5px 0 rgba(165, 165, 165, 0.5);
+  background-color: white;
+}
+
+.editor .ql-container.ql-snow {
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+
+.editor .ql-toolbar.ql-snow {
+  top: 70px !important;
+  margin: 10px 30px 0 30px;
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 10;
+  border-radius: 30px;
+  background-color: #edf2fa;
+  border: none;
+  box-shadow: 0 0 5px 0 rgba(235, 235, 235, 0.5);
+}
+
+@page {
+  margin: 1in;
+}
+
+
+
+@media print {
+  body {
+    background: none;
+  }
+  #editingHeader {
+    display: none;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .editor .ql-editor {
+    width: 6.5in;
+    height: 9in;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    align-self: flex-start;
+  }
+
+  .editor .ql-toolbar.ql-snow {
+    display: none;
+  }
+}
+
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 3px;
+  /* Adjust the height of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(228, 228, 228);
+  border-radius: 10px;
+  height: 10px;
+}
+
+
+
+/* i just they test */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700;900&display=swap");
+
+
+/* TitTap Editor Design */
+.ProseMirror {
+  width: 8.5in;
+  min-height: 11in;
+  padding: 1in;
+  margin: 1rem;
+  box-shadow: 0 0 5px 0 rgba(165, 165, 165, 0.5);
+  background-color: white;
+}
+
+@media (max-width: 500px) {
+  .ProseMirror {
+  
+    outline: none;
+    padding: 0.5in;
+    margin: 0.7rem;
+    width: 3.6in;
+    min-height: 6in
+
+  }
+}
+  @media (min-width: 451px) and (max-width: 900px) {
+      .ProseMirror {
+          position: relative;
+          outline: none;
+          padding: 0.7in;
+          margin: 0.7rem;
+          width: 7.4in;
+          min-height: 9in
+        }
+    }
+
+
+
+
+
+.ProseMirror:focus {
+  outline: none;
+  width: 8.5in;
+  min-height: 11in;
+  padding: 1in;
+  margin: 1rem;
+  box-shadow: 0 0 5px 0 rgba(165, 165, 165, 0.5);
+  background-color: white;
+}
+
+/* .ProseMirror:focus {
+  border: none;
+
+} */
+
+.ProseMirror>*+* {
+  margin-top: 0.7em;
+}
+
+.ProseMirror ul,
+.ProseMirror ol {
+  padding: 0 2rem;
+}
+
+.ProseMirror h1,
+.ProseMirror h2,
+.ProseMirror h3,
+.ProseMirror h4,
+.ProseMirror h5,
+.ProseMirror h6 {
+  line-height: 1.1;
+}
+
+.ProseMirror code {
+  background-color: rgba(#616161, 0.1);
+  color: #616161;
+}
+
+.ProseMirror pre {
+  background: #0d0d0d;
+  color: #fff;
+  font-family: "JetBrainsMono", monospace;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.ProseMirror code {
+  color: inherit;
+  padding: 0;
+  background: none;
+  font-size: 0.8rem;
+}
+
+.ProseMirror img {
+  max-width: 100%;
+  height: auto;
+}
+
+.ProseMirror blockquote {
+  padding-left: 1rem;
+  border-left: 3px solid #999999;
+}
+
+.ProseMirror hr {
+  border: none;
+  border-top: 3px solid #999999;
+  margin: 2rem 0;
+}
+
+/* ............................ */
+/* .textEditor {
+  border-radius: 5px;
+  border: 1px solid grey;
+} */
+
+/* .menuBar {
+  padding-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+} */
+
+.menuBar button {
+  font-size: 18px;
+  margin: 7px;
+  margin-right: 15px;
+  outline: none;
+  border: none;
+  background: none;
+  /* color: rgb(70, 70, 70); */
+  cursor: pointer;
+}
+
+.menuBar button:last-child {
+  margin-right: 7px;
+}
+
+.heading3 {
+  font-size: 15px;
+}
+
+button.is_active {
+  background: rgb(197, 197, 197);
+  padding: 2px 3px;
+  border-radius: 2px;
+}
+
+/* Give a remote user a caret */
+.collaboration-cursor__caret {
+  border-left: 1px solid #0d0d0d;
+  border-right: 1px solid #0d0d0d;
+  margin-left: -1px;
+  margin-right: -1px;
+  pointer-events: none;
+  position: relative;
+  word-break: normal;
+}
+
+/* Render the username above the caret */
+.collaboration-cursor__label {
+  border-radius: 3px 3px 3px 0;
+  color: #ffff; 
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  left: -1px;
+  line-height: normal;
+  padding: 0.1rem 0.3rem;
+  position: absolute;
+  top: -1.4em;
+  user-select: none;
+  white-space: nowrap;
+}
+
+
+.spinner {
+  --d: 18.6px;
+  width: 2.5px;
+  height: 2.5px;
+  border-radius: 50%;
+  color: blue;
+  box-shadow: calc(1*var(--d)) calc(0*var(--d)) 0 0,
+    calc(0.707*var(--d)) calc(0.707*var(--d)) 0 1.1px,
+    calc(0*var(--d)) calc(1*var(--d)) 0 2.2px,
+    calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3.4px,
+    calc(-1*var(--d)) calc(0*var(--d)) 0 4.5px,
+    calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5.6px,
+    calc(0*var(--d)) calc(-1*var(--d)) 0 6.7px;
+  animation: spinner-a90wxe 1s infinite steps(8);
+}
+
+@keyframes spinner-a90wxe {
+  100% {
+    transform: rotate(1turn);
+  }
+}
