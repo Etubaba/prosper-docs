@@ -1,6 +1,6 @@
 <div align="center">
   
- # [Welcome to Prosper Docs - A Real-Time Text-Editor Application!](https://github.com/BrenoFariasdaSilva/TextSync) <img src="https://github.com/Etubaba/prosper-docs.git"  width="3%" height="3%">
+ # [Welcome to Prosper Docs - A Real-Time Text-Editor Application!](https://github.com/Etubaba/prosper-docs.git) <img src="https://github.com/Etubaba/prosper-docs.git"  width="3%" height="3%">
 
 </div>
 
@@ -8,7 +8,7 @@
   
 ---
 
-This project is being deployed in [Fly.io](https://fly.io/) and can be accessed [here](https://textsync.fly.dev/).
+This project was deployed on [Vercel.com](https://vercel.com/) and can be accessed [here](https://prosper-docs-one.vercel.app/).
 
 ---
 
@@ -33,50 +33,6 @@ The system is composed of three main components: the `server`, the `client` and 
   "\_id": "Document ID",
   "data": "Document Text"
   }
-
-## <span style="color:#297deb"> Service Interface: </span>
-
-The service interface is composed of the following commands:
-
-- **_<span style="color:#64fccc"> get-document </span>_**: This event is used to sent a request to the server to get the document from the database and return the document data to the client.
-  - **`Parameters`**:
-    - **`documentId`**: The document ID.
-  - **`Return`**:
-    - **`load-document`**: The event that will be sent to the client, so that it can update the text editor UI with the document data.
-- **_<span style="color:#64fccc"> load-document</span>_**: This event is a response of the server from a `get-document` request, which is used to update the text editor UI with the document data.
-
-  - **`Parameters`**:
-    - **`document`**: The document data.
-  - **`Return`**:
-    - **`none`**;
-
-- **_<span style="color:#64fccc"> send-changes </span>_**: This event is used to send a request to the server to update the document in the database, due to the fact that the user updated the document in the text editor UI and it's return is the broadcast of the changes to the other users that are in the same document session.
-
-  - **`Parameters`**:
-    - **`delta`**: The document changes made by the user.
-  - **`Return`**:
-    - **`delta`**: The document changes that will be broadcasted to the other users, so that they can update their text editor UI.
-
-- **_<span style="color:#64fccc"> receive-changes </span>_**: This event is used to receive the changes froom the server that were made by the other user(s) that are in the same document session.
-
-  - **`Parameters`**:
-    - **`delta`**: The document changes made by the other user(s).
-  - **`Return`**:
-    - **`none`**;
-
-- **_<span style="color:#64fccc"> save-document</span>_**: This event is used to send a request to the server to save the document in the database, due to the fact that thhe timer defined in the client (**_const SAVE_INTERVAL_MS = 1000;_**)has reached the end.
-
-  - **`Parameters`**:
-  - - **`documentID`**: The document ID.
-    - **`data`**: The document data.
-  - **`Return`**:
-    - **`none`**;
-
-- **_<span style="color:#64fccc"> disconnect</span>_**: This event is used to send a request to the server to remove the user from the document session, due to the fact that the user has closed the tab or the browser.
-  - **`Parameters`**:
-    - **`none`**;
-  - **`Return`**:
-    - **`none`**;
 
 # <span style="color:#297deb"> How to run: </span>
 
@@ -121,3 +77,166 @@ $ yarn test:cov
 $ yarn test <test-file-name>
 
 ```
+
+## API BASE_URL
+
+```bash
+ $ https://veegil-media-assessment.onrender.com/api/v1
+```
+
+# REST API
+
+The REST API to the this app is described below.
+
+## User Registration
+
+### Request
+
+`POST /auth/register`
+
+    curl -i -H 'Accept: application/json' -d 'user_name=samuel lala&email=lamus@gmail.com&password=12345' https://veegil-media-assessment.onrender.com/api/v1/auth/register
+
+### Response
+
+    HTTP/1.1 201 OK
+    Date: Thu, 24 Feb 2011 12:36:30 GMT
+    Status: 201 created
+    Connection: close
+    Content-Type: application/json
+
+{
+"user": {
+"id": "6494665ebaa5653dfcb90f39",
+"user_name": "Samuel Folajimi",
+"email": "prosperdiscovery@gmail.com",
+},
+"accessToken": "gfgh....",
+"refreshToken": "jhj...."
+}
+
+## Refresh User Token
+
+### Request
+
+`POST /auth/refresh`
+
+    curl -i -H 'Accept: application/json' -d 'refreshToken=mmsmmsm....' https://veegil-media-assessment.onrender.com/api/v1/auth/refresh
+
+### Response
+
+    HTTP/1.1 200
+    Date: Thu, 24 Feb 2011 12:36:30 GMT
+    Status: 200 Created
+    Connection: close
+    Content-Type: application/json
+
+{
+"user": {
+"id": "6494665ebaa5653dfcb90f39",
+"user_name": "Samuel Folajimi",
+"email": "prosperdiscovery@gmail.com",
+"account_balance": 0
+},
+"accessToken": "gfgh....",
+"refreshToken": "jhj...."
+}
+
+## User Login
+
+### Request
+
+`POST /auth/login`
+
+    curl -i -H 'Accept: application/json' -d 'phone=0908867776&password=new88' https://veegil-media-assessment.onrender.com/api/v1/auth/login
+
+### Response
+
+    HTTP/1.1 201 Created
+    Date: Thu, 24 Feb 2011 12:36:30 GMT
+    Status: 201 Created
+    Connection: close
+    Content-Type: application/json
+    Location: /thing/1
+    Content-Type: 'application/json'
+
+{
+"user": {
+"id": "6494665ebaa5653dfcb90f39",
+"full_name": "Samuel Folajimi",
+"phone": "07054545678",
+"email": "prosperdiscovery@gmail.com",
+"account_balance": 0
+},
+"accessToken": "gfgh....",
+"refreshToken": "jhj...."
+}
+
+## Get User Details with User Documents
+
+### Request
+
+`GET /user/:id`
+`Authorization  Bearer`
+
+    curl -i -H 'Accept: application/json' -d  https://veegil-media-assessment.onrender.com/api/v1/user/id
+
+### Response
+
+    HTTP/1.1 200 OK
+    Date: Thu, 24 Feb 2011 12:36:31 GMT
+    Status: 200 OK
+    Connection: close
+    Content-Type: application/json
+
+{data:{
+
+"id": "6494665ebaa5653dfcb90f39",
+"user_name": "Samuel Folajimi",
+"email": "prosperdiscovery@gmail.com",
+documents:[]
+
+}}
+
+## <span style="color:#297deb"> Events For Document Editing: </span>
+
+The websocket contains the following events:
+
+- **_<span style="color:#64fccc"> load-document </span>_**: This event is used to sent a request to the server to get the the specific document from the database and return the document data to the client.
+  - **`Parameters`**:
+    - **`documentId`**: The document ID.
+  - **`Return`**:
+    - **`document content`**: The event that will be sent to the client, so that it can update the text editor UI with the document data.
+- **_<span style="color:#64fccc"> load-document</span>_**: This event is a response of the server from a `get-document` request, which is used to update the text editor UI with the document data.
+
+  - **`Parameters`**:
+    - **`document`**: The document data.
+  - **`Return`**:
+    - **`none`**;
+
+- **_<span style="color:#64fccc"> send-changes </span>_**: This event is used to send a request to the server to update the document in the database, due to the fact that the user updated the document in the text editor UI and it's return is the broadcast of the changes to the other users that are in the same document session.
+
+  - **`Parameters`**:
+    - **`delta`**: The document changes made by the user.
+  - **`Return`**:
+    - **`delta`**: The document changes that will be broadcasted to the other users, so that they can update their text editor UI.
+
+- **_<span style="color:#64fccc"> receive-changes </span>_**: This event is used to receive the changes froom the server that were made by the other user(s) that are in the same document session.
+
+  - **`Parameters`**:
+    - **`delta`**: The document changes made by the other user(s).
+  - **`Return`**:
+    - **`none`**;
+
+- **_<span style="color:#64fccc"> save-document</span>_**: This event is used to send a request to the server to save the document in the database, due to the fact that thhe timer defined in the client (**_const SAVE_INTERVAL_MS = 1000;_**)has reached the end.
+
+  - **`Parameters`**:
+  - - **`documentID`**: The document ID.
+    - **`data`**: The document data.
+  - **`Return`**:
+    - **`none`**;
+
+- **_<span style="color:#64fccc"> disconnect</span>_**: This event is used to send a request to the server to remove the user from the document session, due to the fact that the user has closed the tab or the browser.
+  - **`Parameters`**:
+    - **`none`**;
+  - **`Return`**:
+    - **`none`**;
