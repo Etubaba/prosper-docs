@@ -14,7 +14,8 @@ import { SaveDocumentDto } from '../dto/savedocument.dto';
 @WebSocketGateway({
   namespace: 'document',
   cors: {
-    origin: ['https://prosper-docs-one.vercel.app', 'http://localhost'],
+    // origin: ['https://prosper-docs-one.vercel.app', 'http://localhost'],
+    origin: '*',
     methods: ['GET', 'POST'],
     allowedHeaders: '*',
     credentials: true,

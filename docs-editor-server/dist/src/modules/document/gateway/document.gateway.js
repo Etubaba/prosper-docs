@@ -135,7 +135,7 @@ DocumentGateway = __decorate([
     (0, websockets_1.WebSocketGateway)({
         namespace: 'document',
         cors: {
-            origin: ['https://prosper-docs-one.vercel.app', 'http://localhost'],
+            origin: '*',
             methods: ['GET', 'POST'],
             allowedHeaders: '*',
             credentials: true,
