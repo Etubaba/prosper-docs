@@ -33,7 +33,7 @@ export default () => ({
   },
   cors: {
     origin: process.env.CORS_ORIGIN || '*',
-    methods: process.env.CORS_METHODS || 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    methods: process.env.CORS_METHODS || 'POST,GET,HEAD,PATCH',
     headers: process.env.CORS_HEADERS || '*',
   },
 });

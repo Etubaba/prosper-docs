@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import config from '../config';
 import { ConfigService } from '@nestjs/config';
 import { json, urlencoded } from 'express';
+import * as cors from 'cors';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
