@@ -49,6 +49,10 @@ body {
      flex-wrap: wrap;
       padding: 6;
   }
+
+ .editor .ql-editor {
+      padding: 0.4in;
+    }
 }
 
 @media (min-width: 420px) and (max-width: 800px) {
