@@ -14,10 +14,14 @@ async function bootstrap() {
 
   app.use(json({ limit: '50mb' }));
   app.use(urlencoded({ limit: '50mb', extended: true }));
-  app.enableCors({
-    origin: config().cors.origin,
-    methods: config().cors.methods,
-  });
+  // app.enableCors({
+  //   origin: ,
+  //   methods: ,
+  // });
+
+  app.use(
+    cors({ origin: config().cors.origin, methods: config().cors.methods }),
+  );
 
   // app.useWebSocketAdapter(new IoAdapter(app));
 
