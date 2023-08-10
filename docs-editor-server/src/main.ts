@@ -10,7 +10,7 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
 
   const port = configService.get<number>('app.port');
-  // app.setGlobalPrefix(configService.get('app.global_url_prefix'));
+  app.setGlobalPrefix(configService.get('app.global_url_prefix'));
 
   app.use(json({ limit: '50mb' }));
   app.use(urlencoded({ limit: '50mb', extended: true }));
