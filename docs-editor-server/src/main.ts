@@ -3,7 +3,6 @@ import { AppModule } from './app.module';
 import config from '../config';
 import { ConfigService } from '@nestjs/config';
 import { json, urlencoded } from 'express';
-import * as cors from 'cors';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -14,14 +13,10 @@ async function bootstrap() {
 
   app.use(json({ limit: '50mb' }));
   app.use(urlencoded({ limit: '50mb', extended: true }));
-  // app.enableCors({
-  //   origin: ,
-  //   methods: ,
-  // });
-
-  app.use(
-    cors({ origin: config().cors.origin, methods: config().cors.methods }),
-  );
+  app.enableCors({
+    origin: '*',
+    methods: 'POST,GET,PATCH',
+  });
 
   // app.useWebSocketAdapter(new IoAdapter(app));
 
