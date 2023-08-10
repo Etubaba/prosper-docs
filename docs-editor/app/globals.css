@@ -43,6 +43,28 @@ body {
   box-shadow: 0 0 5px 0 rgba(235, 235, 235, 0.5);
 }
 
+@media (max-width: 400px) {
+  .ql-toolbar.ql-snow {
+     margin: 5px 7px 0 7px;
+     flex-wrap: wrap;
+      padding: 6;
+  }
+}
+
+@media (min-width: 420px) and (max-width: 800px) {
+  .ql-toolbar.ql-snow {
+      margin: 5px 7px 0 7px;
+      flex-wrap: wrap;
+    }
+}
+
+
+
+
+
+
+
+
 @page {
   margin: 1in;
 }
@@ -98,180 +120,7 @@ body {
 
 
 
-/* i just they test */
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700;900&display=swap");
-
-
-/* TitTap Editor Design */
-.ProseMirror {
-  width: 8.5in;
-  min-height: 11in;
-  padding: 1in;
-  margin: 1rem;
-  box-shadow: 0 0 5px 0 rgba(165, 165, 165, 0.5);
-  background-color: white;
-}
-
-@media (max-width: 500px) {
-  .ProseMirror {
-  
-    outline: none;
-    padding: 0.5in;
-    margin: 0.7rem;
-    width: 3.6in;
-    min-height: 6in
-
-  }
-}
-  @media (min-width: 451px) and (max-width: 900px) {
-      .ProseMirror {
-          position: relative;
-          outline: none;
-          padding: 0.7in;
-          margin: 0.7rem;
-          width: 7.4in;
-          min-height: 9in
-        }
-    }
-
-
-
-
-
-.ProseMirror:focus {
-  outline: none;
-  width: 8.5in;
-  min-height: 11in;
-  padding: 1in;
-  margin: 1rem;
-  box-shadow: 0 0 5px 0 rgba(165, 165, 165, 0.5);
-  background-color: white;
-}
-
-/* .ProseMirror:focus {
-  border: none;
-
-} */
-
-.ProseMirror>*+* {
-  margin-top: 0.7em;
-}
-
-.ProseMirror ul,
-.ProseMirror ol {
-  padding: 0 2rem;
-}
-
-.ProseMirror h1,
-.ProseMirror h2,
-.ProseMirror h3,
-.ProseMirror h4,
-.ProseMirror h5,
-.ProseMirror h6 {
-  line-height: 1.1;
-}
-
-.ProseMirror code {
-  background-color: rgba(#616161, 0.1);
-  color: #616161;
-}
-
-.ProseMirror pre {
-  background: #0d0d0d;
-  color: #fff;
-  font-family: "JetBrainsMono", monospace;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-}
-
-.ProseMirror code {
-  color: inherit;
-  padding: 0;
-  background: none;
-  font-size: 0.8rem;
-}
-
-.ProseMirror img {
-  max-width: 100%;
-  height: auto;
-}
-
-.ProseMirror blockquote {
-  padding-left: 1rem;
-  border-left: 3px solid #999999;
-}
-
-.ProseMirror hr {
-  border: none;
-  border-top: 3px solid #999999;
-  margin: 2rem 0;
-}
-
-/* ............................ */
-/* .textEditor {
-  border-radius: 5px;
-  border: 1px solid grey;
-} */
-
-/* .menuBar {
-  padding-bottom: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-} */
-
-.menuBar button {
-  font-size: 18px;
-  margin: 7px;
-  margin-right: 15px;
-  outline: none;
-  border: none;
-  background: none;
-  /* color: rgb(70, 70, 70); */
-  cursor: pointer;
-}
-
-.menuBar button:last-child {
-  margin-right: 7px;
-}
-
-.heading3 {
-  font-size: 15px;
-}
-
-button.is_active {
-  background: rgb(197, 197, 197);
-  padding: 2px 3px;
-  border-radius: 2px;
-}
-
-/* Give a remote user a caret */
-.collaboration-cursor__caret {
-  border-left: 1px solid #0d0d0d;
-  border-right: 1px solid #0d0d0d;
-  margin-left: -1px;
-  margin-right: -1px;
-  pointer-events: none;
-  position: relative;
-  word-break: normal;
-}
-
-/* Render the username above the caret */
-.collaboration-cursor__label {
-  border-radius: 3px 3px 3px 0;
-  color: #ffff; 
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 600;
-  left: -1px;
-  line-height: normal;
-  padding: 0.1rem 0.3rem;
-  position: absolute;
-  top: -1.4em;
-  user-select: none;
-  white-space: nowrap;
-}
 
 
 .spinner {
