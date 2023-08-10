@@ -81,7 +81,7 @@ $ yarn test <test-file-name>
 ## API BASE_URL
 
 ```bash
- $ https://veegil-media-assessment.onrender.com/api/v1
+ $ https://prosper-docs-vyrc.vercel.app/api/v1
 ```
 
 # REST API
@@ -94,7 +94,7 @@ The REST API to the this app is described below.
 
 `POST /auth/register`
 
-    curl -i -H 'Accept: application/json' -d 'user_name=samuel lala&email=lamus@gmail.com&password=12345' https://veegil-media-assessment.onrender.com/api/v1/auth/register
+    curl -i -H 'Accept: application/json' -d 'user_name=samuel lala&email=lamus@gmail.com&password=12345' https://prosper-docs-vyrc.vercel.app/api/v1/auth/register
 
 ### Response
 
@@ -120,7 +120,7 @@ The REST API to the this app is described below.
 
 `POST /auth/refresh`
 
-    curl -i -H 'Accept: application/json' -d 'refreshToken=mmsmmsm....' https://veegil-media-assessment.onrender.com/api/v1/auth/refresh
+    curl -i -H 'Accept: application/json' -d 'refreshToken=mmsmmsm....' https://prosper-docs-vyrc.vercel.app/api/v1/auth/refresh
 
 ### Response
 
@@ -147,7 +147,7 @@ The REST API to the this app is described below.
 
 `POST /auth/login`
 
-    curl -i -H 'Accept: application/json' -d 'phone=0908867776&password=new88' https://veegil-media-assessment.onrender.com/api/v1/auth/login
+    curl -i -H 'Accept: application/json' -d 'phone=0908867776&password=new88' https://prosper-docs-vyrc.vercel.app//api/v1/auth/login
 
 ### Response
 
@@ -178,7 +178,7 @@ The REST API to the this app is described below.
 `GET /user/:id`
 `Authorization  Bearer`
 
-    curl -i -H 'Accept: application/json' -d  https://veegil-media-assessment.onrender.com/api/v1/user/id
+    curl -i -H 'Accept: application/json' -d https://prosper-docs-vyrc.vercel.app//api/v1/user/id
 
 ### Response
 
@@ -197,7 +197,110 @@ documents:[]
 
 }}
 
-## <span style="color:#297deb"> Events For Document Editing: </span>
+## Create document
+
+### Request
+
+`POST /document/create`
+`Authorization  Bearer`
+
+    curl -i -H 'Accept: application/json' -d 'user_id=new88' https://prosper-docs-vyrc.vercel.app/api/v1/document/create
+
+### Request
+
+{
+data: {
+id: 'doc_di',
+owner_id: 'user_id',
+description: null,
+content: { ops: [Array] },
+title: 'First matter',
+created_at: '2023-08-09T18:01:41.073Z',
+updated_at: '2023-08-10T19:30:28.154Z',
+doc_room: {
+id: 'room_id',
+created_at: '2023-08-09T18:01:42.156Z',
+permitted_users: [Array],
+owner_id: 'user_id',
+documentsId: ''doc_di''
+}
+}
+}
+
+## Get Single Document with document Id
+
+### Request
+
+`GET /document/:id`
+`Authorization  Bearer`
+
+    curl -i -H 'Accept: application/json' -d https://prosper-docs-vyrc.vercel.app/api/v1/document/id
+
+### Response
+
+{
+data: {
+id: 'doc_di',
+owner_id: 'user_id',
+description: null,
+content: { ops: [Array] },
+title: 'First matter',
+created_at: '2023-08-09T18:01:41.073Z',
+updated_at: '2023-08-10T19:30:28.154Z',
+doc_room: {
+id: 'room_id',
+created_at: '2023-08-09T18:01:42.156Z',
+permitted_users: [Array],
+owner_id: 'user_id',
+documentsId: ''doc_di''
+}
+}
+}
+
+## update Document with document Id
+
+### Request
+
+`PATCH /document/update/:id`
+`Authorization  Bearer`
+
+curl -i -H 'Accept: application/json' -d 'title=new88' https://prosper-docs-vyrc.vercel.app/api/v1/document/update/:id
+
+### Response
+
+{
+data: {
+id: 'doc_di',
+owner_id: 'user_id',
+description: null,
+content: { ops: [Array] },
+title: 'First matter',
+created_at: '2023-08-09T18:01:41.073Z',
+updated_at: '2023-08-10T19:30:28.154Z',
+doc_room: {
+id: 'room_id',
+created_at: '2023-08-09T18:01:42.156Z',
+permitted_users: [Array],
+owner_id: 'user_id',
+documentsId: ''doc_di''
+}
+}
+}
+
+## Share Document with another user with user email
+
+### Request
+
+`POST /document/share`
+`Authorization  Bearer`
+
+curl -i -H 'Accept: application/json' -d 'enail=new88&&documentId' https://prosper-docs-vyrc.vercel.app/api/v1/document/share
+
+### Response
+
+{ message: 'Email shared Successdully' }
+
+## <span style="color:#297deb">Websocket Events : </span>
 
 The websocket contains the following events:
 
@@ -205,38 +308,60 @@ The websocket contains the following events:
   - **`Parameters`**:
     - **`documentId`**: The document ID.
   - **`Return`**:
-    - **`document content`**: The event that will be sent to the client, so that it can update the text editor UI with the document data.
-- **_<span style="color:#64fccc"> load-document</span>_**: This event is a response of the server from a `get-document` request, which is used to update the text editor UI with the document data.
+    - The event that will be sent to the client, so that it can update the text editor UI with the document data.
+- **_<span style="color:#64fccc"> save-document</span>_**: This event is an event that saves the document to the mongodb server.
 
   - **`Parameters`**:
-    - **`document`**: The document data.
+    - **`document data & documentId`**: The document data that is to be saved and the document Id
   - **`Return`**:
     - **`none`**;
 
-- **_<span style="color:#64fccc"> send-changes </span>_**: This event is used to send a request to the server to update the document in the database, due to the fact that the user updated the document in the text editor UI and it's return is the broadcast of the changes to the other users that are in the same document session.
+- **_<span style="color:#64fccc"> document-change </span>_**: This event is used to send realtime editting of document, to all collaborators so they can see the realtime editting.
 
   - **`Parameters`**:
     - **`delta`**: The document changes made by the user.
   - **`Return`**:
     - **`delta`**: The document changes that will be broadcasted to the other users, so that they can update their text editor UI.
 
-- **_<span style="color:#64fccc"> receive-changes </span>_**: This event is used to receive the changes froom the server that were made by the other user(s) that are in the same document session.
+- **_<span style="color:#64fccc"> update-document </span>_**: This event is used to receive the changes from the server that were made by the other user(s) that are in the same document session.
 
   - **`Parameters`**:
     - **`delta`**: The document changes made by the other user(s).
   - **`Return`**:
     - **`none`**;
 
-- **_<span style="color:#64fccc"> save-document</span>_**: This event is used to send a request to the server to save the document in the database, due to the fact that thhe timer defined in the client (**_const SAVE_INTERVAL_MS = 1000;_**)has reached the end.
+- **_<span style="color:#64fccc"> cursor-update</span>_**: This event is used to send a realtime cursor position to the server.
 
   - **`Parameters`**:
-  - - **`documentID`**: The document ID.
-    - **`data`**: The document data.
+  - - **`documentId cursorPsition user_name user_color socketId`**: The document ID.
+
   - **`Return`**:
     - **`none`**;
 
-- **_<span style="color:#64fccc"> disconnect</span>_**: This event is used to send a request to the server to remove the user from the document session, due to the fact that the user has closed the tab or the browser.
+- **_<span style="color:#64fccc"> cursor-position</span>_**: This event is used to receive realtime cursor position from the server.
+
+  - **`Parameters`**:
+  - - **`documentId`**: The document ID.
+
+  - **`Return`**:
+    - **` cursorPsition user_name user_color socketId`**;
+
+- **_<span style="color:#64fccc"> connected-users</span>_**: This event is listen for all users/collaborators in a single document.
   - **`Parameters`**:
     - **`none`**;
   - **`Return`**:
     - **`none`**;
+
+# Client App
+
+## Getting Started
+
+Firstly ,install run the development server:
+
+```bash
+npm install
+
+npm run dev
+```
+
+After successfully running app, open [http://localhost:3000](http://localhost:3000) with your browser to see the result. Thank You

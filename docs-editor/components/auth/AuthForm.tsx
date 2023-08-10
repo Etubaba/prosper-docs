@@ -13,7 +13,7 @@ import { AuthType } from "@/interface";
 
 const AuthForm = ({ login }: { login: boolean }) => {
   const [loading, setLoading] = useState(false);
-  const [drop, setDrop] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
   const {
     register,
     handleSubmit,
@@ -41,8 +41,11 @@ const AuthForm = ({ login }: { login: boolean }) => {
       if (resData) {
         setLoading(false);
         router.push("/auth/login");
+        setErrMsg("");
       }
-    } catch (err) {
+    } catch (err: any) {
+      if (err.response) setErrMsg(`${err.response.data.message}`);
+      else setErrMsg(`Something went wrong. Please try again`);
       setLoading(false);
       console.log(err);
     }
@@ -70,12 +73,16 @@ const AuthForm = ({ login }: { login: boolean }) => {
         setCookie("user_id", resData.user.id, {
           maxAge: 60 * 60 * 60 * 31,
         });
-        setDrop(true);
+        setErrMsg("");
+
         const successPath =
           docId === undefined ? "/document" : `/document/${docId}`;
         router.push(successPath);
       }
-    } catch (err) {
+    } catch (err: any) {
+      if (err.response) setErrMsg(`${err.response.data.message}`);
+      else setErrMsg(`Something went wrong. Please try again`);
+
       setLoading(false);
       console.log(err);
     }
@@ -132,7 +139,7 @@ const AuthForm = ({ login }: { login: boolean }) => {
               className="border w-full p-2 form-control rounded-md focus:border-orange focus:outline-none focus:ring-1 focus:ring-orange focus:ring-opacity-5"
             />
             {errors.email !== undefined && (
-              <p className="text-red-600 text-xs py-2">
+              <p className="text-red-700 text-xs py-2">
                 This field is required
               </p>
             )}
@@ -155,12 +162,14 @@ const AuthForm = ({ login }: { login: boolean }) => {
               // placeholder={"First Name"}
             />
             {errors.password !== undefined && (
-              <p className="text-red-600 text-xs py-2">
+              <p className="text-red-700 text-xs py-2">
                 This field is required
               </p>
             )}
           </div>
         </div>
+
+        {errMsg !== "" && <p className="text-xs my-2 text-red-700">{errMsg}</p>}
 
         <Button
           loading={loading}

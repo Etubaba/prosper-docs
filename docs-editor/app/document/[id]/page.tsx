@@ -21,6 +21,7 @@ async function page({ params: { id } }: ParamsInterface) {
   };
 
   //check if user has permission to edit doc
+  console.log(docDetails);
   // docPermission(userId, docDetails?.data?.doc_room);
 
   return (

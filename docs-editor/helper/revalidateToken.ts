@@ -2,6 +2,7 @@ import { BASE_URL } from "@/constant";
 import { cookies } from "next/headers";
 
 import axios from "axios";
+import { redirect } from "next/navigation";
 
 export const revalidateToken = async () => {
   const cookieStore = cookies();
@@ -27,7 +28,9 @@ export const revalidateToken = async () => {
       });
     }
   } catch (err: any) {
-    console.log(err.response.data.message);
-    // redirect("/auth");
+    if (err.response) {
+      console.log(err.response?.data?.message);
+    }
+    redirect("/auth/login");
   }
 };
