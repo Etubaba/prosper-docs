@@ -56,7 +56,7 @@ const AuthForm = ({ login }: { login: boolean }) => {
         password: data["password"],
       };
       const { data: resData } = await axios.post(
-        `${BASE_URL}auth/login`,
+        `${BASE_URL}auth/login/`,
         formdata
       );
       if (resData) {
