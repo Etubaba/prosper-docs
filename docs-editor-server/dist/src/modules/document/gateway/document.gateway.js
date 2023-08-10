@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DocumentGateway = void 0;
 const websockets_1 = require("@nestjs/websockets");
 const socket_io_1 = require("socket.io");
-const config_1 = require("../../../../config");
 const prisma_service_1 = require("../../../database/prisma/service/prisma.service");
 const savedocument_dto_1 = require("../dto/savedocument.dto");
 let DocumentGateway = class DocumentGateway {
@@ -136,9 +135,10 @@ DocumentGateway = __decorate([
     (0, websockets_1.WebSocketGateway)({
         namespace: 'document',
         cors: {
-            origin: '*',
-            allowedHeaders: (0, config_1.default)().cors.headers,
-            methods: (0, config_1.default)().cors.methods,
+            origin: ['https://prosper-docs-one.vercel.app', 'http://localhost'],
+            methods: ['GET', 'POST'],
+            allowedHeaders: '*',
+            credentials: true,
         },
     }),
     __metadata("design:paramtypes", [prisma_service_1.PrismaService])

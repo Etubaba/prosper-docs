@@ -14,10 +14,10 @@ import { SaveDocumentDto } from '../dto/savedocument.dto';
 @WebSocketGateway({
   namespace: 'document',
   cors: {
-    // origin: config().cors.origin,
-    origin: '*',
-    allowedHeaders: config().cors.headers,
-    methods: config().cors.methods,
+    origin: ['https://prosper-docs-one.vercel.app', 'http://localhost'],
+    methods: ['GET', 'POST'],
+    allowedHeaders: '*',
+    credentials: true,
   },
 })
 export class DocumentGateway
