@@ -43,7 +43,7 @@ body {
   box-shadow: 0 0 5px 0 rgba(235, 235, 235, 0.5);
 }
 
-@media (max-width: 400px) {
+@media (max-width: 419px) {
   .ql-toolbar.ql-snow {
      margin: 5px 7px 0 7px;
      flex-wrap: wrap;
