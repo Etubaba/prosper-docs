@@ -66,3 +66,8 @@ export interface docRoomType {
   permitted_users: string[];
   owner_id: String;
 }
+export interface AuthType {
+  password: string;
+  email: String;
+  user_name?: string;
+}

@@ -9,6 +9,7 @@ import { setCookie } from "cookies-next";
 import axios from "axios";
 import { useAuthStore, useShareDoc } from "@/store";
 import Link from "next/link";
+import { AuthType } from "@/interface";
 
 const AuthForm = ({ login }: { login: boolean }) => {
   const [loading, setLoading] = useState(false);
@@ -26,7 +27,7 @@ const AuthForm = ({ login }: { login: boolean }) => {
   //in the case of shared document
   const docId = useShareDoc((state) => state.documentId) as undefined | string;
 
-  const registerUser = async (data: any) => {
+  const registerUser = async (data: AuthType) => {
     try {
       const formdata = {
         user_name: data["user_name"],
@@ -47,7 +48,7 @@ const AuthForm = ({ login }: { login: boolean }) => {
     }
   };
 
-  const loginUser = async (data: any) => {
+  const loginUser = async (data: AuthType) => {
     setLoading(true);
     try {
       const formdata = {
