@@ -136,7 +136,7 @@ DocumentGateway = __decorate([
     (0, websockets_1.WebSocketGateway)({
         namespace: 'document',
         cors: {
-            origin: (0, config_1.default)().cors.origin,
+            origin: '*',
             allowedHeaders: (0, config_1.default)().cors.headers,
             methods: (0, config_1.default)().cors.methods,
         },

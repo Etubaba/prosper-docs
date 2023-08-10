@@ -14,7 +14,8 @@ import { SaveDocumentDto } from '../dto/savedocument.dto';
 @WebSocketGateway({
   namespace: 'document',
   cors: {
-    origin: config().cors.origin,
+    // origin: config().cors.origin,
+    origin: '*',
     allowedHeaders: config().cors.headers,
     methods: config().cors.methods,
   },
