@@ -36,8 +36,10 @@ const page = async () => {
             <h2 className="text-sm font-main">My documents</h2>
 
             <div className="flex justify-between md:min-w-[200px]">
-              <p className="text-sm text-textcolor">Date Created </p>
-              <BsFolderFill className="text-iconcolor" />
+              <p className="md:text-sm  text-xs text-textcolor">
+                Date Created{" "}
+              </p>
+              <BsFolderFill className="text-iconcolor ml-2 md:ml-0" />
             </div>
           </div>
 

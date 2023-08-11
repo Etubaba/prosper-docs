@@ -14,11 +14,13 @@ const Mydocument = ({ doc }: { doc: documentType }) => {
             alt=""
             src="https://www.gstatic.com/images/branding/product/2x/docs_2020q4_48dp.png"
           />
-          <p className="text-texttitle leading-3">{doc.title}</p>
+          <p className="text-texttitle md:text-sm text-xs leading-3">
+            {doc.title}
+          </p>
         </div>
         <div className="flex justify-between md:min-w-[200px] items-center">
           <p className="text-textcolor text-sm">{getTimeAgo(doc.created_at)}</p>
-          <BsThreeDotsVertical className="text-iconcolor text-lg" />
+          <BsThreeDotsVertical className="text-iconcolor text-lg md:ml-0 ml-2" />
         </div>
       </div>
     </Link>
