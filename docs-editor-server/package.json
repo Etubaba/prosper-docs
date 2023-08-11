@@ -5,6 +5,9 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+   "engines": {
+    "node": ">=16.14.0"
+  },
   "scripts": {
     "prebuild":"yarn install --ignore-engines && yarn add nest &&    yarn global add rimraf && rimraf dist ",
     "postinstall": "npx prisma generate",
