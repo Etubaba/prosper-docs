@@ -13,6 +13,7 @@ const ShareDocModal = ({ open, onClose, id }: ModalParent) => {
   const [msg, setMsg] = useState("");
 
   const shareDocument = async () => {
+    setLoading(true);
     try {
       const token = getCookie("_er3434");
       axios.defaults.headers.common["Authorization"] = "Bearer " + token;
