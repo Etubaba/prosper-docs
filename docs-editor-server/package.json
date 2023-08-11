@@ -6,9 +6,9 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "prebuild": "rimraf dist",
+    "prebuild":"yarn install --ignore-engines && yarn add nest &&    yarn global add rimraf && rimraf dist ",
     "postinstall": "npx prisma generate",
-    "build": "nest build",
+    "build": "yarn run nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
