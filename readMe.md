@@ -34,6 +34,10 @@ The system is composed of three main components: the `server`, the `client` and 
   "data": "Document Text"
   }
 
+## Note
+
+The backend was hosted on render, and due to it is hosted on a free tier, the APIs might take 1-2mins to be ready on the first hit of the api endpoints (This is so because of the time for the app to spine up after it is short down 15mins of app inactivity), so expect a loading for 1-2mins on the first call of any endpoint.
+
 # <span style="color:#297deb"> How to run: </span>
 
 ## Guide and Instruction
