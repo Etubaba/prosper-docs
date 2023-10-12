@@ -50,9 +50,15 @@ const page = async () => {
             />
           ) : (
             <div>
-              {userInfo?.documents?.map((doc: documentType, idx: number) => (
-                <Mydocument doc={doc} key={idx} />
-              ))}
+              {userInfo?.documents
+                ?.sort((a: documentType, b: documentType) => {
+                  const dateA = new Date(a.created_at).getTime(); // Convert to number
+                  const dateB = new Date(b.created_at).getTime(); // Convert to number
+                  return dateB - dateA; // Sort in descending order
+                })
+                .map((doc: documentType, idx: number) => (
+                  <Mydocument doc={doc} key={idx} />
+                ))}
             </div>
           )}
         </div>

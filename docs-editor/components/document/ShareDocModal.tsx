@@ -38,7 +38,7 @@ const ShareDocModal = ({ open, onClose, id }: ModalParent) => {
   };
   return (
     <Modal open={open} onClose={onClose}>
-      <div className="md:w-[24rem]  h-auto">
+      <div className="md:w-[24rem] w-[19rem] h-auto">
         <p className=" text-center font-semibold md:text-left ">
           Share to other users
         </p>

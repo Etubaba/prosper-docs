@@ -157,7 +157,7 @@ const AuthForm = ({ login }: { login: boolean }) => {
               {...register("password", {
                 required: "THis field is required",
               })}
-              type={"text"}
+              type={"password"}
               className="border w-full p-2 form-control rounded-md focus:border-orange focus:outline-none focus:ring-1 focus:ring-orange focus:ring-opacity-5"
               // placeholder={"First Name"}
             />

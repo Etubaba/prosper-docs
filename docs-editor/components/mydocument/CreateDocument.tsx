@@ -22,7 +22,7 @@ const CreateDocument = ({ id }: { id: string }) => {
       });
       if (data) {
         router.push(`/document/${data.data.id}`);
-        setLoading(false);
+        setTimeout(() => setLoading(false), 3000);
       }
     } catch (err: any) {
       setLoading(false);
