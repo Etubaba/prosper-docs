@@ -20,7 +20,7 @@ async function bootstrap() {
 
   // app.useWebSocketAdapter(new IoAdapter(app));
 
-  await app.listen(port, () => {
+  await app.listen(port, '0.0.0.0', () => {
     console.log(`Listening at port ${port}`);
   });
 }
