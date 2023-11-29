@@ -5,7 +5,7 @@ export default () => ({
   app: {
     environment:
       process.env.APP_ENV === 'production' ? 'production' : process.env.APP_ENV,
-    port: parseInt(process.env.APP_PORT, 10) || 4110,
+    port: parseInt(process.env.PORT, 10),
     host: 'localhost',
     name: process.env.APP_NAME || 'prosper-docs',
     url: process.env.APP_URL,

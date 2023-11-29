@@ -5,9 +5,9 @@ dotenv.config();
 exports.default = () => ({
     app: {
         environment: process.env.APP_ENV === 'production' ? 'production' : process.env.APP_ENV,
-        port: parseInt(process.env.APP_PORT, 10) || 3010,
+        port: parseInt(process.env.PORT, 10),
         host: 'localhost',
-        name: process.env.APP_NAME || 'veegil-media',
+        name: process.env.APP_NAME || 'prosper-docs',
         url: process.env.APP_URL,
         global_url_prefix: process.env.GLOBAL_URL_PREFIX || 'api/v1',
         client_url: process.env.CLIENT_URL,
